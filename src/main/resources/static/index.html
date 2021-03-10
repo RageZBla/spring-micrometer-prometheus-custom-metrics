@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>PCF Ticket Metrics Application</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      display: flex;
+      font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    }
+
+    .container {
+      margin: auto;
+      text-align: center;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    li {
+      margin: 4px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+    }
+
+    button {
+      min-height: 72px;
+      margin: 4px;
+      padding: 8px;
+      flex-grow: 1;
+
+      font-size: 18px;
+      line-height: 24px;
+      color: #FFF;
+      border: 1px dashed #000;
+      background-color: #01b5a3;
+      font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #00cec2;
+    }
+  </style>
+
+  <script>
+    function incrementOpened() {
+      fetch('/increment/opened', {method: 'POST'});
+    }
+    function incrementClosed() {
+      fetch('/increment/closed', {method: 'POST'});
+    }
+  </script>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>PCF Ticket Metrics Application</h1>
+    <p>Click the buttons below to update openened/closed tickets metrics</p>
+  </div>
+  <ul>
+    <li>
+      <button type="button" onclick="incrementOpened()">Increment total opened ticket counter</button>
+    </li>
+    <li>
+      <button type="button" onclick="incrementClosed()">Increment total closed ticket counter</button>
+    </li>
+
+    <li>
+      <a href="/actuator/prometheus" target="_blank">
+        <button type="button">See the metrics</button>
+      </a>
+    </li>
+  </ul>
+</div>
+</body>
+</html>
