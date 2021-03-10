@@ -29,7 +29,7 @@ $ cf tail -f --envelope-type=counter ticket-metrics | grep pcf_ticket
 
 ## Endpoints
 
-- POST `/increase/closed` - increments the `pcf_ticket_closed` counter
-- POST `/increase/opened` - increments the `pcf_ticket_opened` counter
+- POST `/increase/closed` - increments the `pcf_ticket_closed_total` counter
+- POST `/increase/opened` - increments the `pcf_ticket_opened_total` counter
 - `/actuator/prometheus` - Prometheus endpoint for metrics
 
